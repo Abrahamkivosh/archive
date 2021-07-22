@@ -18,4 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+<<<<<<< HEAD
 Route::get('/index', [PageController::class,"index"])->name('index');
+=======
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+>>>>>>> 8a06b2c4a3ea20443124251097863280f5dd4f0c
