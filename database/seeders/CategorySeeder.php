@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -16,6 +17,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $names =["photos","document","music","vido","notes"];
+        $users = User::all();
         foreach ($names as $key => $name) {
            
            $category = Category::create(['name'=>$name]);
@@ -23,7 +25,8 @@ class CategorySeeder extends Seeder
             foreach ($groups as $key => $group) {
                 Group::create([
                     'name'=>$group,
-                    'category_id'=> $category->id
+                    'category_id'=> $category->id,
+                    'user_id'=> $users->random()->id
                 ]);
             }
         }

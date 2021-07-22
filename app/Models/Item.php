@@ -9,4 +9,22 @@ class Item extends Model
 {
     use HasFactory;
     protected $guarded =[] ;
+    /**
+     * Get the user that owns the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    /**
+     * Get the group that owns the Item
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }
