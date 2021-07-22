@@ -12,4 +12,19 @@ class PageController extends Controller
     public function photos(){
         return view('admin.photos');
     }
+    public function documents(){
+        return view('admin.documents');
+    }
+    public function events(){
+        return view('admin.events');
+    }
+    public function videos(){
+        return view('admin.videos');
+    }
+    public function music(){
+        return view('admin.music');
+    }
+    public function notes(){
+        return view('admin.notes');
+    }
 }
