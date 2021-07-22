@@ -17,6 +17,7 @@ class CreateGroupsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId("category_id");
+            $table->foreignId("user_id");
             $table->softDeletes();
             $table->timestamps();
         });
