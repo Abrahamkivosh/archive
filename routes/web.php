@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', [PageController::class,"index"])->name('index');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('index',[App\Http\Controllers\PageController::class, 'index'])->name('index');
+Route::get('/photos',[App\Http\Controllers\PageController::class, 'photos'])->name('photos');
