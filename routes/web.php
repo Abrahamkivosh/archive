@@ -21,7 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('index',[App\Http\Controllers\PageController::class, 'index'])->name('index');
 Route::get('/photos',[App\Http\Controllers\PageController::class, 'photos'])->name('photos');
 Route::get('/grouphotos/{id}',[App\Http\Controllers\PageController::class, 'grouphotos'])->name('grouphotos');
 Route::get('/documents',[App\Http\Controllers\PageController::class, 'documents'])->name('documents');
