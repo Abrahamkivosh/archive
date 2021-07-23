@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Photo</h1>
+            <h1 class="m-0 text-dark">{{ $group->name }}</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Photos</li>
+              <li class="breadcrumb-item"><a href="#">{{ $group->category->name  }}</a></li>
+              <li class="breadcrumb-item active">{{ $group->name }}</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -23,22 +23,48 @@
     <section class="content">
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
+          {{--  --}}
+          
           <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <h3>150</h3>
+          @foreach ($group->items as $item)
+          {{-- Image --}}
+          
+            
 
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
+          @switch( $group->category->name )
+         
+              @case("image")
+              <div class="col-md-4 ">
+              @include("admin.photos",['item'=>$item])
+                  
+                  @break
+                 
+              @case("video")
+              <div class="col-md-4 ">
+                  @include("admin.videos",['item'=>$item])
+                  @break
+             
+              @case("music")
+              <div class="col-md-12 ">
+                  @include("admin.music",['item'=>$item])
+                  @break
+                
+              @case("document")
+                <div class="col-md-4 ">
+                  @include("admin.document",['item'=>$item])
+                  @break
+              @default
+                  
+          @endswitch
+
+
+          {{-- video --}}
+
+          {{-- Document --}}
+          
+               </div>
+          @endforeach
+           
           </div>
           <!-- /.row -->
 

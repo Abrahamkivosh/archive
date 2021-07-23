@@ -14,14 +14,14 @@ class PageController extends Controller
         $categories =Category::all();
         return view('admin.index',compact('categories'));
     }
-    public function photos(){
-        $categories = Category::where("name","photos")->with("groups")->paginate(9);
-        return view('admin.photos',compact('categories'));
-    }
-    public function grouphotos(Request $id){
-        $group = Group::where('id',$id)->first();
-        return view('admin/photos.singlegroup',compact('group'));
-    }
+    // public function photos(){
+    //     $categories = Category::where("name","photos")->with("groups")->paginate(9);
+    //     return view('admin.photos',compact('categories'));
+    // }
+    // public function grouphotos(Request $id){
+    //     $group = Group::where('id',$id)->first();
+    //     return view('admin/photos.singlegroup',compact('group'));
+    // }
     public function documents(){
         return view('admin.documents');
     }
