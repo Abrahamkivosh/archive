@@ -7,7 +7,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Photos</h1>
+            <h1 class="m-0 text-dark">Photo</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,33 +24,22 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-
-
-            @foreach ($categories as $category)
-            @foreach ($category['groups'] as $group)
             <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                  <div class="inner">
-                    <h3>150</h3>
+              <!-- small box -->
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>150</h3>
 
-                    <p>{{ $group->name }}</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-bag"></i>
-                  </div>
-                  <a href="{{ route('grouphotos',$group->id) }}" class="small-box-footer">View More... <i class="fas fa-arrow-circle-right"></i></a>
+                  <p>New Orders</p>
                 </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
-
-            @endforeach
-
-            @endforeach
-
+            </div>
             <!-- ./col -->
           </div>
-
-
           <!-- /.row -->
 
         </div><!-- /.container-fluid -->
