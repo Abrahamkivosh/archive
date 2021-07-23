@@ -24,9 +24,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/photos',[App\Http\Controllers\PageController::class, 'photos'])->name('photos');
+Route::get('/grouphotos/{id}',[App\Http\Controllers\PageController::class, 'grouphotos'])->name('grouphotos');
 Route::get('/documents',[App\Http\Controllers\PageController::class, 'documents'])->name('documents');
 Route::get('/events',[App\Http\Controllers\PageController::class, 'events'])->name('events');
 Route::get('/notes',[App\Http\Controllers\PageController::class, 'notes'])->name('notes');
 Route::get('/music',[App\Http\Controllers\PageController::class, 'music'])->name('music');
 Route::resource('categories', CategoryController::class)->except("index") ;
 Route::get("groups/{categoryId}",[GroupController::class,'index'])->name("groups.index");
+Route::get('/videos',[App\Http\Controllers\PageController::class, 'videos'])->name('videos');
