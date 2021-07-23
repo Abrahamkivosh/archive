@@ -12,9 +12,10 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($category_id)
     {
-        //
+        $groups = Group::where("user_id",auth()->user()->id)->where("category_id",$category_id)->latest()->paginate(10);
+        return $groups ;
     }
 
     /**
@@ -35,7 +36,8 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Group::create($request->all()) ;
+        return redirect()->back()->with("success","New Group created") ;
     }
 
     /**

@@ -16,7 +16,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $names =["photos","document","music","vido","notes"];
+        $names =["photos","document","music","vidoes","notes"];
         $users = User::all();
         foreach ($names as $key => $name) {
            

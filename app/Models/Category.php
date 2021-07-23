@@ -18,4 +18,8 @@ class Category extends Model
     {
         return $this->hasMany(Group::class, 'category_id', 'id');
     }
+    public function groupsCount()
+    {
+        // $this->with('groups')->wi;
+    }
 }

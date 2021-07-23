@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $categories = Category::latest()->with("groups")-> withCount("groups")->paginate(10) ;
+        // return $categories->chunk(3) ;
+        return view('admin.index',compact('categories'));
     }
 }
