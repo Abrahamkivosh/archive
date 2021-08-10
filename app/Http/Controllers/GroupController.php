@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Group;
 use App\Models\Item;
+use App\Models\Group;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
@@ -17,7 +18,8 @@ class GroupController extends Controller
     public function index($category_id)
     {
         $category = Category::find($category_id);
-        $groups = Group::where("user_id",auth()->user()->id)->where("category_id",$category_id)->with("category") ->latest()->get();
+        $groups = Group::where("user_id",auth()->user()->id)->where("category_id",$category_id)->withCount("items") ->latest()->get();
+  
         return view('admin.groups',compact('groups','category'));
     }
 
@@ -39,7 +41,10 @@ class GroupController extends Controller
      */
     public function store(Request $request)
     {
-        Group::create($request->all()) ;
+        $data = $request->all();
+  
+        $user = Auth::user()->groups()->create( $data );
+        
         return redirect()->back()->with("success","New Group created") ;
     }
 
@@ -53,6 +58,10 @@ class GroupController extends Controller
     {
         
         $group = Group::find($groupId) ;
+        $group->load("items") ;
+
+        // return $group ;
+       
        
        
         return view('admin/photos.singlegroup',compact('group'));

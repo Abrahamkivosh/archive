@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
@@ -30,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('/music',[App\Http\Controllers\PageController::class, 'music'])->name('music');
 Route::resource('categories', CategoryController::class)->except("index") ;
 Route::get("groups/{categoryId}",[GroupController::class,'index'])->name("groups.index");
+Route::post("groups/{categoryId}",[GroupController::class,'store'])->name("groups.store");
 Route::get('/items/{groupId}',[GroupController::class, 'show'])->name('groups.show');
+Route::post('/items',[ItemController::class, 'store'])->name('items.store');
 
 Route::get('/videos',[App\Http\Controllers\PageController::class, 'videos'])->name('videos');

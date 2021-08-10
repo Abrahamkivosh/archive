@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,25 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $group = Group::find($request->group_id) ;
+        $items = $request->file("name") ;
+        foreach ($items as $data) {
+          
+         $itemExtension =$data->getClientOriginalExtension() ;
+        
+
+         if ( $itemExtension == "mp4" ) {
+             # to upload videos
+         } else {
+             # to upload pictures
+             $image->file("name")->saveAs("musics",$data->getClientOriginalName() );
+
+         }
+         return "okay" ;
+         
+
     }
+
 
     /**
      * Display the specified resource.
@@ -82,4 +100,15 @@ class ItemController extends Controller
     {
         //
     }
+
+    /**
+     * Upload images
+     */
+    public function uploadImage($image)
+    {
+
+      
+
+    }
+
 }
